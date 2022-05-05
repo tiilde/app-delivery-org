@@ -26,7 +26,7 @@ export default function Login() {
                     <Text style={styles.buttonText}>Entrar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttonRegister}>
-                    <Text style={styles.buttonRegister}>Não possui cadastro? Cadastre-se</Text>
+                    <Text style={styles.buttonRegister}>Não possui cadastro? Clique aqui para se cadastrar</Text>
                 </TouchableOpacity>
             </Animatable.View>
         </View>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     button: {
-        backgroundColor: '#FFF',
+        backgroundColor: '#384169',
         width: '100%',
         borderRadius: 5,
         paddingVertical: 8,
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 18,
-        color: '#384169',
+        color: '#FFF',
         fontWeight: 'bold',
     },
     buttonRegister: {

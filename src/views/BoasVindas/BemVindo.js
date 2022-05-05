@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity } from 'react-native';
+import {View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 
 import * as Animatable from 'react-native-animatable';
 
@@ -20,9 +20,8 @@ export default function BemVindo() {
                     blurRadius={10}
                 >
                     <Animatable.Image
-                        animation="flipInY"
+                        animation="flipInX"
                         source={require("../../assets/organic-logo2.png")}
-                        // style={{ width: 300, height: 300 }}
                         style={styles.logo}
                         resyzeMode="contain"
                     />
@@ -32,8 +31,7 @@ export default function BemVindo() {
                         style={styles.containerForm}
                     >
                         <Text style={styles.title}>
-                            Faça sua feirinha de alimentos orgânicos direto da
-                            sua casa!
+                            Bem vindo(a) ao Organic Market, seu delivery de alimentos orgânicos.                    
                         </Text>
                         <Text style={styles.text}>Entre na sua conta</Text>
                         <TouchableOpacity
@@ -82,15 +80,16 @@ const styles = StyleSheet.create({
         paddingEnd: '8%',
     },
     title: {
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: 'bold',
         marginTop: 28,
         marginBottom: 12,
         color: '#476079',   
     },
     text: {
+        marginTop: 14,
         fontSize: 16,
-        color: '#384169'
+        color: '#384169',
     },
     button: {
         position: 'absolute',
@@ -105,7 +104,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 18,
-        color: '#012030',
+        color: '#384169',
         fontWeight: 'bold',
     },
 })
