@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import {View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity } from 'react-native';
 
 import * as Animatable from 'react-native-animatable';
 
@@ -13,27 +13,38 @@ export default function BemVindo() {
     return (
         <View style={styles.container}>
             <View style={styles.containerLogo}>
-                <Animatable.Image
-                    animation="flipInY"
-                    source={require('../../assets/organic-logo2.png')}
-                    style={{width: '65%' , height: '65%'}}
-                    resyzeMode="contain"
-                />
-            </View>
-            <Animatable.View  delay={600 }animation="fadeInUp" style={styles.containerForm}>
-                <Text style={styles.title}> 
-                    Faça sua feirinha de alimentos orgânicos direto da sua casa!</Text>
-                <Text style={styles.text}>
-                    Entre na sua conta
-                </Text>
-                <TouchableOpacity 
-                    style={styles.button}
-                    onPress={ () => navigation.navigate('Login')}
+                <ImageBackground
+                    source={require("../../assets/bg-1.png")}
+                    style={styles.bg}
+                    resizeMode="cover"
+                    blurRadius={10}
+                >
+                    <Animatable.Image
+                        animation="flipInY"
+                        source={require("../../assets/organic-logo2.png")}
+                        // style={{ width: 300, height: 300 }}
+                        style={styles.logo}
+                        resyzeMode="contain"
+                    />
+                    <Animatable.View
+                        delay={600}
+                        animation="fadeInUp"
+                        style={styles.containerForm}
                     >
-                    <Text style={styles.buttonText}>Entrar</Text>
-                </TouchableOpacity>
-
-            </Animatable.View>
+                        <Text style={styles.title}>
+                            Faça sua feirinha de alimentos orgânicos direto da
+                            sua casa!
+                        </Text>
+                        <Text style={styles.text}>Entre na sua conta</Text>
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={() => navigation.navigate("Login")}
+                        >
+                            <Text style={styles.buttonText}>Entrar</Text>
+                        </TouchableOpacity>
+                    </Animatable.View>
+                </ImageBackground>
+            </View>
         </View>
     );
 }
@@ -42,6 +53,19 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#F5F5F5',
+    },
+    bg: {
+        flex: 1,
+        height: "100%",
+        width: "100%",
+        justifyContent: "center",
+    },
+    logo:{
+        alignSelf: "center",
+        width: 310,
+        height: 300,
+        marginTop: 50,
+        marginBottom: 50,
     },
     containerLogo: {
         flex: 2,
@@ -54,19 +78,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#DAEFE0',
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        paddingStart: '5%',
-        paddingEnd: '5%',
+        paddingStart: '8%',
+        paddingEnd: '8%',
     },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
         marginTop: 28,
         marginBottom: 12,
-        color: '#3D3D3D',   
+        color: '#476079',   
     },
     text: {
         fontSize: 16,
-        color: '#A1A1A1'
+        color: '#384169'
     },
     button: {
         position: 'absolute',
