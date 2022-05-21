@@ -12,21 +12,23 @@ const Stack = createNativeStackNavigator();
 
 export default function AppRoutes() {
     return (
-        <Stack.Navigator>
-            {/* <Stack.Screen 
+        <NavigationContainer>
+            <Stack.Navigator>
+                {/* <Stack.Screen 
                 name="Splash" 
                 component={Splash} 
             /> */}
-            <Stack.Screen 
-                name="BoasVindas" 
-                component={BemVindo} 
-                options={{headerShown: false}}
-            />
-            <Stack.Screen 
-                name="Login" 
-                component={Login}
-                options={{headerShown: false}}
-            />
-        </Stack.Navigator>
+                <Stack.Screen
+                    name="BoasVindas"
+                    component={BemVindo}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="Login"
+                    component={Login}
+                    options={{ headerShown: false }}
+                />
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 }
