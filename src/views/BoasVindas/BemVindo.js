@@ -31,7 +31,7 @@ export default function BemVindo() {
                         style={styles.containerForm}
                     >
                         <Text style={styles.title}>
-                            Bem vindo(a) ao Organic Market, seu delivery de alimentos orgânicos.                    
+                            Bem vindo(a) ao Organic Market.                    
                         </Text>
                         <Text style={styles.text}>Entre na sua conta</Text>
                         <TouchableOpacity
@@ -90,6 +90,8 @@ const styles = StyleSheet.create({
         marginTop: 14,
         fontSize: 16,
         color: '#384169',
+        textAlign: 'center',
+        
     },
     button: {
         position: 'absolute',
