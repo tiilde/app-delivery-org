@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 import * as Animatable from 'react-native-animatable';
+import { Alert } from 'react-native-web';
 
 export default function Login() {
+    // estado para armazenar o email e senha
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const saveAndNavigate = async () => {
+        // checa se os campos e-mail e senha estão preenchidos
+        const emailLength = email.length;
+        const passwordLength = password.length;
+        if (emailLength > 0 && passwordLength > 0) {
+            // armazena os dados do usuário no AsyncStorage
+            const user = {
+                email: email,
+                password: password
+            }
+            await asyncStorageSave(user);
+            // exibir um alerta de sucesso
+            alert('Usuário logado com sucesso!');
+            // redireciona para a tela Home
+            return navigation.navigate('Home');
+        } else {
+            // exibir um alerta de erro
+            alert('Preencha todos os campos!');
+        }
+
+    }
     return (
         <View style={styles.container}>
             <Animatable.View animation="fadeInLeft" delay={500} style={styles.containerHeader}>
