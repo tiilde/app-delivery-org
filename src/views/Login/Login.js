@@ -3,34 +3,44 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 import * as Animatable from 'react-native-animatable';
-import { Alert } from 'react-native-web';
+import { Alert } from 'react-native';
 
-export default function Login() {
+export default function Login( { navigation }) {
     // estado para armazenar o email e senha
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const saveAndNavigate = async () => {
+    const salvarEnavegar = async () => {
         // checa se os campos e-mail e senha estão preenchidos
         const emailLength = email.length;
         const passwordLength = password.length;
         if (emailLength > 0 && passwordLength > 0) {
             // armazena os dados do usuário no AsyncStorage
-            const user = {
+            const usuario = {
                 email: email,
                 password: password
             }
-            await asyncStorageSave(user);
+            await salvarDados(usuario);
             // exibir um alerta de sucesso
-            alert('Usuário logado com sucesso!');
+            console.log('Usuário logado com sucesso!');
             // redireciona para a tela Home
             return navigation.navigate('Home');
         } else {
             // exibir um alerta de erro
-            alert('Preencha todos os campos!');
+            Alert.alert('Dados vazios','Preencha e-mail e senha');
         }
 
     }
+    const salvarDados = async (usuario) => {
+        try {
+
+            await AsyncStorage.setItem('usuario', JSON.stringify(usuario));
+            console.log("Dados salvos com sucesso no AsyncStorage");
+        } catch (error){
+            console.log("Não foi possível salvar os dados!");
+        }      
+    }
+
     return (
         <View style={styles.container}>
             <Animatable.View animation="fadeInLeft" delay={500} style={styles.containerHeader}>
@@ -39,21 +49,26 @@ export default function Login() {
             <Animatable.View style={styles.containerForm}>
                 <Text style={styles.title}>E-mail</Text>
                 <TextInput 
-                    style={styles.input} 
+                    style={styles.input}
+                    value={email} 
                     placeholder="Digite seu e-mail"
+                    onChangeText={(e) => setEmail(e)}
                 />
 
                 <Text style={styles.title}>Senha</Text>
                 <TextInput 
-                    style={styles.input} 
+                    style={styles.input}
+                    value={password}
                     placeholder="Digite sua senha"
+                    secureTextEntry={true}
+                    onChangeText={(e) => setPassword(e)}
                 />
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity 
+                    style={styles.button}
+                    onPress={salvarEnavegar}
+                    >
                     <Text style={styles.buttonText}>Entrar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonRegister}>
-                    <Text style={styles.buttonRegister}>Não possui cadastro? Clique aqui para se cadastrar</Text>
                 </TouchableOpacity>
             </Animatable.View>
         </View>
@@ -108,14 +123,5 @@ const styles = StyleSheet.create({
         color: '#FFF',
         fontWeight: 'bold',
     },
-    buttonRegister: {
-        marginTop: 14,
-        alignSelf: 'center',
-           
-    },
-    registerText: {
-        color:'#384169',
-    }
-
 
 });

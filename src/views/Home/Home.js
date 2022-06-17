@@ -1,29 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, Alert } from 'react-native';
-import { AsyncStorage } from '@react-native-community/async-storage';
+import  AsyncStorage  from '@react-native-async-storage/async-storage';
+import { get } from 'react-native/Libraries/Utilities/PixelRatio';
 
-function Home({ navigation }) {
+export default function Home({ navigation }) {
 
     // armazenando dados
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [nome, setNome] = useState('');
 
     // inicializando a função que recupera os dados do usuário
 
     useEffect(() => {
+        // recuperar nome no async storage
         getUser();
     }, []);
 
     // função que recupera os dados
     const getUser = async () => {
         try {
-            const user = await AsyncStorage.getItem('user');
+            const user = await AsyncStorage.getItem('usuario');
             const parsedUser = JSON.parse(user);
-            setEmail(parsedUser.email);
+            setNome(parsedUser.nome);
         }
         catch (error) {
 
-            Alert.alert(error);
+            console.log(error);
         }
-    }    
+    }
+    
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <Text>Testando tela Home</Text>
+            <Text>Nome: {nome} </Text>
+            <Button title='Voltar' onPress={() => navigation.navigate('BoasVindas')} />
+        </View>
+    )
 }
+
