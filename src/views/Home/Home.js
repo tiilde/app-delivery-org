@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Button, Alert } from 'react-native';
 import  AsyncStorage  from '@react-native-async-storage/async-storage';
 
-
 export default function Home({ navigation }) {
 
     // armazenando dados
@@ -12,6 +11,7 @@ export default function Home({ navigation }) {
 
     // recuperar nome no async storage
     useEffect(() => {
+        // recuperar nome no async storage
         getUser();
     }, []);
 

@@ -23,6 +23,7 @@ export default function Login( { navigation }) {
             await salvarDados(usuario);
             // exibir um alerta de sucesso
             console.log('Usuário logado com sucesso!', usuario);
+
             // redireciona para a tela Home
             return navigation.navigate('Home');
         } else {
@@ -36,6 +37,7 @@ export default function Login( { navigation }) {
 
             await AsyncStorage.setItem('usuario', JSON.stringify(usuario));
             console.log("Dados salvos com sucesso no AsyncStorage", usuario);
+
         } catch (error){
             console.log("Não foi possível salvar os dados!");
         }      

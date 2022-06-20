@@ -6,6 +6,8 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import BemVindo from "./src/views/BoasVindas/BemVindo";
 import Login from "./src/views/Login/Login";
+import Cadastro from "./src/views/Cadastro/Cadastro";
+import Home from "./src/views/Home/Home";
 
 
 
@@ -25,6 +27,16 @@ export default function App() {
                 <Stack.Screen
                     name="Login"
                     component={Login}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="Cadastro"
+                    component={Cadastro}
+                    options={{ headerShown: false }}        
+                />
+                <Stack.Screen
+                    name="Home"
+                    component={Home}
                     options={{ headerShown: false }}
                 />
             </Stack.Navigator>

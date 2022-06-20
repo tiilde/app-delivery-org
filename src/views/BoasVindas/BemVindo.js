@@ -31,14 +31,22 @@ export default function BemVindo() {
                         style={styles.containerForm}
                     >
                         <Text style={styles.title}>
-                            Bem vindo(a) ao Organic Market.                    
+                            Bem vindo(a) ao Organic Market.
                         </Text>
-                        <Text style={styles.text}>Entre na sua conta</Text>
                         <TouchableOpacity
                             style={styles.button}
                             onPress={() => navigation.navigate("Login")}
                         >
                             <Text style={styles.buttonText}>Entrar</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            style={styles.buttonRegister}
+                            onPress={() => navigation.navigate("Cadastro")}
+                        >
+                            <Text style={styles.registerText}>
+                                Não possui cadastro? Clique aqui para se
+                                cadastrar
+                            </Text>
                         </TouchableOpacity>
                     </Animatable.View>
                 </ImageBackground>
@@ -82,7 +90,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 22,
         fontWeight: 'bold',
-        marginTop: 28,
+        marginTop: 40,
         marginBottom: 12,
         color: '#476079',   
     },
@@ -96,11 +104,11 @@ const styles = StyleSheet.create({
     button: {
         position: 'absolute',
         backgroundColor: '#FFF',
-        borderRadius: 50,
+        borderRadius: 30,
         paddingVertical: 8,
         width: '60%',
         alignSelf: 'center',
-        bottom: '15%',
+        bottom: '20%',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -109,4 +117,14 @@ const styles = StyleSheet.create({
         color: '#384169',
         fontWeight: 'bold',
     },
+    buttonRegister: {
+        position: 'absolute',
+        borderRadius: 50,
+        paddingVertical: 8,
+        alignSelf: 'center',
+        bottom: '8%',      
+    },
+    registerText: {
+        color:'#384169',
+    }
 })

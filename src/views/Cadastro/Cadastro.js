@@ -34,6 +34,7 @@ export default function Cadastrar({ navigation }) {
             }
             await salvarDados(usuario);
             return navigation.navigate("Home");
+
         } else {
             Alert.alert("Erro", "Não foi possível salvar os dados! Preencha os campos", [
                 { text: "OK", onPress: () => console.log("Alerta fechado") }
