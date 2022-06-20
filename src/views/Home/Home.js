@@ -30,8 +30,8 @@ export default function Home({ navigation }) {
     
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text>Testando tela Home</Text>
-            <Text>Nome: {nome} </Text>
+            <Text>Olá {nome}! :D</Text>
+            <Text>Esta página está em construção ^_^</Text>
             <Button title='Voltar' onPress={() => navigation.navigate('BoasVindas')} />
         </View>
     )
